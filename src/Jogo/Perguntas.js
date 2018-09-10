@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, GridRow, Radio, Button, Divider } from 'semantic-ui-react';
+import { Grid, GridRow, Radio, Button, Message } from 'semantic-ui-react';
 
 const Perguntas = () => {
     return (
@@ -14,25 +14,34 @@ const Perguntas = () => {
                 <Grid columns={2}>
                     <GridRow>
                         <Grid.Column>
-                            Alternativa 1 &nbsp;
-                        <Radio toggle />
+                            <Message color='yellow'>
+                                <p>Alternativa 1 </p>
+                                <Radio toggle />
+                            </Message>
                         </Grid.Column>
                         <Grid.Column>
-                            Alternativa 2 &nbsp;
-                        <Radio toggle />
+                            <Message color='teal'>
+                                <p>Alternativa 2 </p>
+                                <Radio toggle />
+                            </Message>
                         </Grid.Column>
                     </GridRow>
                     <GridRow>
                         <Grid.Column>
-                            Alternativa 3 &nbsp;
-                        <Radio toggle />
+                            <Message color='pink'>
+                                <p>Alternativa 3 </p>
+                                <Radio toggle />
+                            </Message>
                         </Grid.Column>
                         <Grid.Column>
-                            Alternativa 4 &nbsp;
-                        <Radio toggle />
+                            <Message color='brown'>
+                                <p>Alternativa 4 </p>
+                                <Radio toggle />
+                            </Message>
                         </Grid.Column>
                     </GridRow>
                 </Grid>
+                <hr/>
                 <Button>Finalizar</Button>
             </span>
         </div>
