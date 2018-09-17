@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Button, CardContent, Container, Header, Segment } from 'semantic-ui-react'
 import Navegacao from '../Home/Navegacao';
-import {Redirect} from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import config, { auth, providers } from './../config'
 import Usuario from '../Jogo/Usuario';
@@ -38,8 +38,8 @@ class Inicio extends Component {
     }
 
     render() {
-        if(this.state.estaLogado){
-            return <Redirect to='/categorias' />
+        if (this.state.estaLogado) {
+             return <Redirect to='/categorias' />
         }
         return (
             <div>
@@ -57,10 +57,10 @@ class Inicio extends Component {
                                 <Card fluid>
                                     <Card.Content>
                                         Acesse agora mesmo
-                    </Card.Content>
+                                    </Card.Content>
                                     <CardContent>
                                         <Button color='facebook' onClick={() => this.autentica('facebook')}>Login com Facebook</Button>
-                                        <Button color='twitter'>Login com Twitter</Button>
+                                        <Button color='twitter' onClick={() => this.autentica('twitter')}>Login com Twitter</Button>
                                         <Button color='blue'>Usuário Admin</Button>
                                     </CardContent>
                                 </Card>

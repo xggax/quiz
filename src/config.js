@@ -17,6 +17,7 @@ import Rebase from 're-base';
 
   export const providers = {
     'facebook' : new firebase.auth.FacebookAuthProvider,
+    'twitter': new firebase.auth.TwitterAuthProvider
   }
 
 

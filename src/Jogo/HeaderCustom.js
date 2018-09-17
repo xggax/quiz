@@ -6,7 +6,7 @@ import firebase from 'firebase';
 class HeaderCustom extends Component {
 
     constructor(props) {
-        super(props)
+        super(props);
 
         this.state = {
             usuario: '',
@@ -56,7 +56,9 @@ class HeaderCustom extends Component {
                 </Menu>
             )
         }
+        // Destructor Assignment - retirando de dentro dos states as propriedades
         const { foto, nome } = this.state.usuario;
+
         return (
             <div>
                 <header className="App-header">
@@ -71,22 +73,23 @@ class HeaderCustom extends Component {
                         <Menu.Menu position='right'>
                             {
                                 this.state.estaLogado &&
-                                    <Menu.Item><Image avatar src={foto} /></Menu.Item>
-                            }
-                            {  this.state.estaLogado &&       
-                                    <Dropdown item text={nome}>
-                                        <Dropdown.Menu>
-                                            <Dropdown.Item onClick={this.deslogarUsuario}>
-                                                Sair
-                                        </Dropdown.Item>
-                                        </Dropdown.Menu>
-                                    </Dropdown>
+                                <Menu.Item><Image avatar src={foto} /></Menu.Item>
                             }
                             {
                                 !this.state.estaLogado &&
                                 <Menu.Item><Icon name='user' /></Menu.Item>
                             }
-                                
+                            {
+                                this.state.estaLogado &&
+                                <Dropdown item text={nome}>
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item onClick={this.deslogarUsuario}>
+                                            Sair
+                                        </Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            }
+
 
                         </Menu.Menu>
 
