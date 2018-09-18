@@ -17,7 +17,8 @@ class App extends Component {
         <div className="App">
           <Route path='/' exact component={Inicio} />
           <Route path='/categorias' component={Categorias} />
-          <Route path='/perguntas' component={Perguntas} />
+          {/*Os parâmetros passados pelas rotas chegam no componente através da propriedade params*/}
+          <Route path='/perguntas/:nome' component={Perguntas} />
           <Route path='/resultado' component={Resultado} />
           <Route path='/ranking' component={Ranking} />
 
