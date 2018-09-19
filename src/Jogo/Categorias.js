@@ -30,8 +30,9 @@ class Categorias extends Component {
 
                 <Grid columns={5}>
                     {
-                        Object.keys(this.state.categorias).map(key => {
-                            return <Categoria key={key} titulo={this.state.categorias[key].nome} icone={this.state.categorias[key].icone} id={key}/>
+                        Object.keys(this.state.categorias)
+                        .map(key => {
+                            return <Categoria key={key} titulo={this.state.categorias[key].nome} icone={this.state.categorias[key].icone} />
                         })
                     }
                     
