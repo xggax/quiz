@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header, Icon } from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
 
 
 const tamanho = {
@@ -10,6 +11,7 @@ const tamanho = {
 const Categoria = props => {
     return (
         <Grid.Column>
+            <Link to={`/perguntas/${props.id}`}>
             <Segment circular style={tamanho}>
                 <Header as='h2'>
                     <Header.Subheader>
@@ -18,6 +20,7 @@ const Categoria = props => {
                     {props.titulo}
                 </Header>
             </Segment>
+            </Link>
         </Grid.Column>
     )
 }
