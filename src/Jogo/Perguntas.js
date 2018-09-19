@@ -1,9 +1,12 @@
 import React from 'react';
-import { Grid, GridRow, Radio, Button, Message } from 'semantic-ui-react';
+import { Grid, GridRow, Radio, Button, Message, Header } from 'semantic-ui-react';
+
+import HeaderCustom from './HeaderCustom';
 
 const Perguntas = () => {
     return (
         <div>
+            <HeaderCustom/>
             <h2>Perguntas sobre Profissões</h2>
             <p>Mostre que você entende tudo sobre esse assunto</p>
 

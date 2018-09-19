@@ -8,17 +8,13 @@ import Categorias from './Jogo/Categorias';
 import Perguntas from './Jogo/Perguntas';
 import Resultado from './Jogo/Resultado';
 import Ranking from './Jogo/Ranking';
-import Header from './Jogo/Header';
+import HeaderCustom from './Jogo/HeaderCustom';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-          <header className="App-header">
-            <Header />
-            <h1 className="App-title">Jogo de Perguntas e Respostas</h1>
-          </header>
           <Route path='/' exact component={Inicio} />
           <Route path='/categorias' component={Categorias} />
           <Route path='/perguntas' component={Perguntas} />
