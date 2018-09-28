@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, GridRow, Radio, Button, Message, Header, Icon } from 'semantic-ui-react';
+import { Grid, GridRow, Radio, Button, Message, Header, Icon, Progress } from 'semantic-ui-react';
 import axios from 'axios';
 
 import HeaderCustom from './HeaderCustom';
@@ -10,7 +10,9 @@ class Perguntas extends Component {
 
         this.state = {
             perguntas: {},
-            estaCarregando: false
+            estaCarregando: false,
+            perguntaAtual: 0,
+            totalPerguntas: 0
         }
 
     }
@@ -47,11 +49,11 @@ class Perguntas extends Component {
 
     }
 
-    renderPergunta(pergunta, id) {
+    renderPergunta(pergunta) {
 
         return (
 
-            <span key={id}>
+            <span>
                 <h3>PERGUNTA: {pergunta.titulo}</h3>
 
                 <Grid columns={2}>
@@ -92,25 +94,33 @@ class Perguntas extends Component {
 
 
     render() {
+        let item = [];
         if (this.state.estaCarregando) {
             return <p>Carregando...</p>
         }
         return (
-            <div>
-                <HeaderCustom />
-                <h2><Icon name={this.state.perguntas.icone} />{this.props.match.params.nome}</h2>
-                <p>Mostre que você entende tudo sobre esse assunto</p>
+            
+        <div>
+            <HeaderCustom />
+            <h2><Icon name={this.state.perguntas.icone} />{this.props.match.params.nome}</h2>
+            <p>Mostre que você entende tudo sobre esse assunto</p>
 
-                {
-                    this.state.perguntas.perguntas && Object.keys(this.state.perguntas.perguntas)
-                        .map(key => {
-                            return (this.renderPergunta(this.state.perguntas.perguntas[key], key))
-                        })
+            {
+                this.state.perguntas.perguntas && Object.keys(this.state.perguntas.perguntas)
+                    .map(key => {
+                        console.log(key);
+                        item.push(key);
+                    })
 
-                }
-
+            }
+            {       
+                this.state.perguntas.perguntas && this.renderPergunta(this.state.perguntas.perguntas[item[this.state.perguntaAtual]])
+                   // return (this.renderPergunta(this.state.perguntas.perguntas[key], key))
+            
+            }
+                <Progress value={this.state.perguntaAtual + 1} total={item.length} progress='ratio'/>
                 <Button>Finalizar</Button>
-            </div>
+        </div>
         )
     }
 }
