@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, GridRow, Radio, Button, Message, Header, Icon, Progress } from 'semantic-ui-react';
 import axios from 'axios';
+import _ from 'lodash';
 
 import HeaderCustom from './HeaderCustom';
 
@@ -14,6 +15,8 @@ class Perguntas extends Component {
             perguntaAtual: 0,
             totalPerguntas: 0
         }
+
+        this.proximaPergunta = this.proximaPergunta.bind(this);
 
     }
 
@@ -35,10 +38,13 @@ class Perguntas extends Component {
             .get(url)
             .then(dados => {
                 const chave = Object.keys(dados.data)[0];
-                console.log('Lista de Perguntas ', dados.data[chave]);
+                const listaDePerguntas = dados.data[chave];
+                console.log('Lista de Perguntas ', listaDePerguntas);
+                console.log('Quantidade de perguntas ', _.size(listaDePerguntas));
                 this.setState({
                     estaCarregando: false,
-                    perguntas: dados.data[chave],
+                    perguntas: listaDePerguntas ,
+                    totalPerguntas: _.size(listaDePerguntas)
                 })
             })
             .catch(err => {
@@ -49,6 +55,18 @@ class Perguntas extends Component {
 
     }
 
+    proximaPergunta(){
+        const {perguntaAtual, totalPerguntas} = this.state;
+        console.log(perguntaAtual, totalPerguntas);
+        if(perguntaAtual<totalPerguntas-1){
+            this.setState({
+                perguntaAtual : this.state.perguntaAtual+1
+            })
+        }else{
+            console.log('Terminou as perguntas, mostre as respostas');
+        }
+    }
+    
     renderPergunta(pergunta) {
 
         return (
@@ -119,7 +137,7 @@ class Perguntas extends Component {
             
             }
                 <Progress value={this.state.perguntaAtual + 1} total={item.length} progress='ratio'/>
-                <Button>Finalizar</Button>
+                <Button onClick={this.proximaPergunta}>Proxima</Button>
         </div>
         )
     }
