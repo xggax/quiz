@@ -4,7 +4,8 @@ Quiz de perguntas e respostas com login via rede social e Ranking. A aplicação
 
 Tecnologias e Libs:
 
-React.Js
-Firebase
-Axios
+React.Js,
+Firebase,
+Axios,
+Lodash,
 Semantic UI
